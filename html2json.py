@@ -17,12 +17,8 @@ except IOError:
 
 soup = BeautifulSoup(input_file)
 
-for ul1 in soup.find_all('ul'):
-	print(ul1.text.strip())
-	for li1 in ul1.find_all('li', recursive=False):
-		print("& " + li1.text.strip())
-		for ul2 in li1.find_all('ul', recursive=False):
-			print("   * " + ul2.text.strip())
-			for li2 in ul2.find_all('li', recursive=False):
-				print("      # " + li2.text.strip())
-	print "--------------------------------------------------"
+i = 0
+for ul in soup.findAll('ul'):
+	for li in ul.findAll('li'):
+		print i + ": " + li.text
+		i = i + 1
